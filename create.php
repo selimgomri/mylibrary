@@ -10,19 +10,14 @@
 </head>
 
 <body>
-
     <header>
         <nav>
-            <ul>
-                <li><a href='http://localhost:8000/create.php'>create</a></li>
-                <li><a href='http://localhost:8000'>read</a></li>
-            </ul>
+            <button><a href='http://localhost:8000'>Home</a></button>
         </nav>
     </header>
     <!--siging database -------------------------------------------------------------------------------------->
     <?php
     include "dbConnection.php"; // Using database connection file here
-
 
     $sql = "SELECT id, name FROM author";
     $result = $conn->query($sql);

@@ -12,16 +12,12 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href='http://localhost:8000/create.php'>create</a></li>
-                <li><a href='http://localhost:8000'>read</a></li>
-            </ul>
 
             <form method="POST">
                 <input type="text" name="search">
                 <a href="search.php"><button>search</button></a>
             </form>
-
+            <button><a href='http://localhost:8000/create.php'>Add book</a></button>
         </nav>
     </header>
 
@@ -31,17 +27,17 @@
     $sql = "SELECT book.id, title, release_date, name FROM book JOIN author ON book.author_id=author.id ";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $data = explode(" ",preg_replace('/\s+/', ' ', $_REQUEST['search']));
+        $data = explode(" ", preg_replace('/\s+/', ' ', $_REQUEST['search']));
         var_dump($data);
 
         if (isset($data)) {
-            
+
             $conditions = [];
 
-            for ($i=0;$i<count($data);$i++) {
-                $conditions[] = "title LIKE '%" . $data[$i] ."%'";
-                $conditions[] = "release_date LIKE '%" . $data[$i] ."%'";
-                $conditions[] = "name LIKE '%" . $data[$i] ."%'";
+            for ($i = 0; $i < count($data); $i++) {
+                $conditions[] = "title LIKE '%" . $data[$i] . "%'";
+                $conditions[] = "release_date LIKE '%" . $data[$i] . "%'";
+                $conditions[] = "name LIKE '%" . $data[$i] . "%'";
             }
 
             if (!empty($conditions)) {
