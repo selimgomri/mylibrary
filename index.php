@@ -14,8 +14,6 @@
             <ul>
                 <li><a href='http://localhost:8000/create.php'>create</a></li>
                 <li><a href='http://localhost:8000'>read</a></li>
-                <li><a href='http://localhost:8000/aux_create.php'>create_aux</a></li>
-
             </ul>
         </nav>
     </header>
@@ -35,8 +33,6 @@
                 <th>Author</th>
                 <th>Readers_note</th>
                 <th>Edit</th>
-
-
             </tr>
             <?php // output data of each row 
             ?>
@@ -47,6 +43,8 @@
                     <td> <?php echo $row["name"]; ?> </td>
                     <td> <?php echo $row["readers_note"]; ?> </td>
                     <td> <button><a href="edit.php?id=<?php echo $row["id"] ?>">EDIT</a></button> </td>
+                    <td> <button><a href="delete.php?id=<?php echo $row["id"] ?>">DELETE</a></button> </td>
+
 
 
                 </tr>

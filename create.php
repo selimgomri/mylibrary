@@ -15,8 +15,6 @@
             <ul>
                 <li><a href='http://localhost:8000/create.php'>create</a></li>
                 <li><a href='http://localhost:8000'>read</a></li>
-                <li><a href='http://localhost:8000/aux_create.php'>create_aux</a></li>
-
             </ul>
         </nav>
     </header>
@@ -42,7 +40,7 @@
         <br />
 
         <label for="author_id">Choose an author: </label>
-        <select name="author_id" id ="author_id">
+        <select name="author_id" id="author_id">
             <option value="">...</option>
             <?php
             // author menu
