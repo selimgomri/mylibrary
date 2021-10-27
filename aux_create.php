@@ -1,11 +1,4 @@
 <?php
-
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "library";
-
 include "dbConnection.php"; // Using database connection file here
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
