@@ -14,8 +14,8 @@
         <nav>
 
             <form method="POST">
-                <input type="text" name="search">
-                <a href="search.php"><button>search</button></a>
+                <input type="text" name="search" class=form-control>
+                <button>search</button>
             </form>
             <button><a href='create.php'>Add book</a></button>
         </nav>
@@ -26,12 +26,13 @@
 
     $sql = "SELECT book.id, title, release_date, name FROM book JOIN author ON book.author_id=author.id ";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_REQUEST['search'])) {
+        
         $data = explode(" ", preg_replace('/\s+/', ' ', $_REQUEST['search']));
 
 
-        if (isset($data)) {
-
+        if (!empty($data)) {
+            echo "Results for '" . $_REQUEST['search'] . "'";
             $conditions = [];
 
             for ($i = 0; $i < count($data); $i++) {
@@ -41,6 +42,7 @@
             }
 
             if (!empty($conditions)) {
+                
                 $sql .= "WHERE " . implode(" OR ", $conditions);
             }
         }
@@ -51,11 +53,15 @@
 
     if ($result->num_rows > 0) {
     ?>
-        <table>
+        <table class="table table-dark table-hover">
             <tr>
                 <th>Title</th>
                 <th>Release Date</th>
                 <th>Author</th>
+                <th></th>
+                <th></th>
+
+
 
             </tr>
             <?php // output data of each row 
