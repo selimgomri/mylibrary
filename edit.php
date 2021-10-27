@@ -15,8 +15,6 @@
             <ul>
                 <li><a href='http://localhost:8000/create.php'>create</a></li>
                 <li><a href='http://localhost:8000'>read</a></li>
-                <li><a href='http://localhost:8000/aux_create.php'>create_aux</a></li>
-
             </ul>
         </nav>
     </header>
@@ -30,7 +28,7 @@
     $sql = "SELECT title, release_date, author_id, name from book JOIN author ON author_id=author.id WHERE book.id='$id'"; // select query
     $result = $conn->query($sql); // select query
 
-    //var_dump($result);
+
     $data = mysqli_fetch_array($result); // fetch data
 
 
