@@ -17,7 +17,7 @@
                 <input type="text" name="search">
                 <a href="search.php"><button>search</button></a>
             </form>
-            <button><a href='http://localhost:8000/create.php'>Add book</a></button>
+            <button><a href='create.php'>Add book</a></button>
         </nav>
     </header>
 
@@ -28,7 +28,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data = explode(" ", preg_replace('/\s+/', ' ', $_REQUEST['search']));
-        var_dump($data);
+
 
         if (isset($data)) {
 
@@ -46,7 +46,7 @@
         }
     }
 
-
+    $sql .= "ORDER BY title ASC";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
