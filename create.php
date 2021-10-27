@@ -22,17 +22,8 @@
     </header>
     <!--siging database -------------------------------------------------------------------------------------->
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "library";
+    include "dbConnection.php"; // Using database connection file here
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
     $sql = "SELECT id, name FROM author";
     $result = $conn->query($sql);
@@ -47,7 +38,7 @@
         <br />
 
         <label for="release_date">Enter release date: </label>
-        <input type="integer" name='release_date' id="release_date">
+        <input type="text" name='release_date' id="release_date">
         <br />
 
         <label for="author_id">Choose an author: </label>

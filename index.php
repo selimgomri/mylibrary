@@ -19,20 +19,11 @@
             </ul>
         </nav>
     </header>
+
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "library";
+    include "dbConnection.php"; // Using database connection file here
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT title, release_date, name, readers_note FROM book JOIN author ON book.author_id=author.id";
+    $sql = "SELECT book.id, title, release_date, name, readers_note FROM book JOIN author ON book.author_id=author.id";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -43,6 +34,8 @@
                 <th>Release Date</th>
                 <th>Author</th>
                 <th>Readers_note</th>
+                <th>Edit</th>
+
 
             </tr>
             <?php // output data of each row 
@@ -53,6 +46,8 @@
                     <td><?php echo $row["release_date"]; ?> </td>
                     <td> <?php echo $row["name"]; ?> </td>
                     <td> <?php echo $row["readers_note"]; ?> </td>
+                    <td> <button><a href="edit.php?id=<?php echo $row["id"] ?>">EDIT</a></button> </td>
+
 
                 </tr>
             <?php } ?>
