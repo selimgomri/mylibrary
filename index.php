@@ -58,7 +58,7 @@
         <table class="table table-dark table-hover">
             <tr>
                 <th>Title</th>
-                <th>Release Date</th>
+                <th>Release year</th>
                 <th>Author</th>
                 <th></th>
                 <th></th>

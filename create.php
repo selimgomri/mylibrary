@@ -33,7 +33,7 @@
         <input type="text" name='title' id="title" required>
         <br />
 
-        <label for="release_year">Enter release date: </label>
+        <label for="release_year">Enter release year: </label>
         <input type="text" name='release_year' id="release_year" required>
         <br />
 
@@ -49,7 +49,7 @@
         </select>
         <br />
 
-        <input type="submit" value="submit">
+        <input type="submit" value="Submit">
 
     </form>
 
@@ -58,14 +58,18 @@
 
         // collect value of input field
         $data = $_REQUEST;
-
-        if (empty($data['title']) || empty($data['release_year']) || empty($data['author_id'])) {
-            ?> <p class="request_error"> <?php echo "data is empty";?> </p> <?php
-        } else {
-
+        
+        if (empty($data['title'])) {
+            ?> <p class="request_error"> <?php echo "Title is empty";?> </p> <?php
+        }
+        elseif (empty($data['release_year'])) {
+            ?> <p class="request_error"> <?php echo "Release year is empty";?> </p> <?php
+        } 
+        elseif (empty($data['author_id'])) {
+            ?> <p class="request_error"> <?php echo "Please choose an author";?> </p> <?php
+        } 
+        else {
             $sql = "INSERT INTO book (title, release_year, author_id) VALUES ('" . mysqli_real_escape_string($conn, $data['title']) . "', " . $data['release_year'] . ", " . $data['author_id'] . ")";
-
-
 
             if ($conn->query($sql) === TRUE) {
                 ?> <p class="request_done"> <?php echo "New book added successfully"; ?> 
@@ -73,16 +77,13 @@
                 <?php // header("Location: index.php"); // redirects to read page
             } 
             else {
-            ?> <p class="request_error"> <?php echo "Error: " . $sql . "<br>" . $conn->error; ?> </p>
+            ?> <p class="request_error"> <?php echo "Invalid format of release year"; ?> </p>
             <?php
             }
         }
     }
     $conn->close();
     ?>
-
-
-
 </body>
 
 </html>

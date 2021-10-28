@@ -31,6 +31,7 @@
 
 
         $edit = mysqli_query($conn, "UPDATE book SET title='$title', release_year='$releaseYear', author_id='$authorId' WHERE book.id='$id'");
+
     }
 
 
@@ -47,7 +48,7 @@
         <input type="text" name='title' value="<?php echo $data['title'] ?>" required>
         <br />
 
-        <label for="release_year">Edit release date: </label>
+        <label for="release_year">Edit release year: </label>
         <input type="text" name='release_year' value="<?php echo $data['release_year'] ?>" required>
         <br />
 
@@ -78,17 +79,15 @@
 
             if ($edit) {
 
-                /* Update $data to echo the new info of book */
-
-
-
-        ?> <p class="request_done"> <?php echo "Book successfully updated"; ?> </p>
-            <?php
-            } else {
-            ?> <p class="request_error"> <?php echo mysqli_error($conn); ?> </p>
-                ?><?php
-                }
-            } ?>
+                ?> <p class="request_done"> <?php echo "Book successfully updated"; ?> </p>
+                <?php
+            }
+            else {
+                ?> <p class="request_error"> <?php echo "Invalid format of release year"; ?> </p>
+    <?php
+            }
+        }
+        ?>
 
     </form>
 
