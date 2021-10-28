@@ -1,0 +1,19 @@
+body {
+    margin: 5px 35px ;
+    padding: 0px;
+    background-color: #e2e2e2;
+}
+
+header h1 {
+    display: flex;
+    justify-content: center;
+}
+.form-control {
+    width: 20%;
+}
+.request_done {
+    color: green;
+}
+.request_error {
+    color :red;
+}

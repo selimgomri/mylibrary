@@ -50,12 +50,12 @@ CREATE TABLE `book` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
   `author_id` int DEFAULT NULL,
-  `release_date` int DEFAULT NULL,
+  `release_year` int DEFAULT NULL,
   `readers_note` float DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_book_author_idx` (`author_id`),
   CONSTRAINT `fk_book_author` FOREIGN KEY (`author_id`) REFERENCES `book` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (1,'Harry Potter and the Philosopher\'s Stone ',1,1997,4.27),(2,'Harry Potter and the Chamber of Secrets',1,1998,4.03),(3,'Harry Potter and the Prisoner of Azkaban',1,1999,4.33),(4,'A Game of Thrones',2,1996,4.45),(5,'A Clash of Kings ',2,1998,4.45);
+INSERT INTO `book` VALUES (1,'Harry  the Philosopher\'s Stone ',1,1997,4.27),(2,'Harry Pott',2,1299,4.03),(3,'Harry Potter and the Prisoner of Azkaban',1,1999,4.33),(4,'Gamee of Throne',1,1996,4.46),(17,'Jojo',1,1000,NULL),(20,'eee',1,2222,NULL),(21,'eee',1,2222,NULL),(22,'eee',1,2222,NULL);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -77,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-26 13:59:31
+-- Dump completed on 2021-10-28  9:45:34
