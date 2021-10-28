@@ -18,6 +18,13 @@
             <form method="POST" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">          
                 <input type="search" name="search" class="form-control" placeholder="Search...">
                 <button>search</button>
+                <select>
+                    <option value="">..</option>
+                    <?php 
+                    for ($i=1900;$i<2021;$i+=10) { ?>
+                        <option value=""><?php echo $i; ?> </option>
+                    <?php } ?>
+                </select>
             </form>
             <button><a href='create.php'>Add book</a></button>
         </nav>
