@@ -23,13 +23,6 @@
 
     $id = $_GET['id']; // get id through query string
 
-    $sql = "SELECT title, release_year, author_id, name from book JOIN author ON author_id=author.id WHERE book.id='$id'"; // select query
-    $result = $conn->query($sql); // select query
-
-
-    $data = mysqli_fetch_array($result); // fetch data
-
-
     if (isset($_POST['update'])) // when click on Update button
     {
         $title = mysqli_real_escape_string($conn, $_POST['title']);
@@ -38,27 +31,24 @@
 
 
         $edit = mysqli_query($conn, "UPDATE book SET title='$title', release_year='$releaseYear', author_id='$authorId' WHERE book.id='$id'");
-
-        echo "Book successfully updated";
-
-        if ($edit) {
-            mysqli_close($conn); // Close connection
-            header("index.php"); // redirects to read page
-            exit;
-        } else {
-            echo mysqli_error($conn);
-        }
     }
+
+
+    $sql = "SELECT title, release_year, author_id, name from book JOIN author ON author_id=author.id WHERE book.id='$id'"; // select query
+    $result = $conn->query($sql); // select query
+
+    $data = mysqli_fetch_array($result); // fetch data
+
     ?>
 
     <form method="POST">
-        <h1> Edit book </h1>
+        <h2> Edit book </h2>
         <label for="title">Edit book title: </label>
-        <input type="text" name='title' value="<?php echo $data['title'] ?>">
+        <input type="text" name='title' value="<?php echo $data['title'] ?>" required>
         <br />
 
         <label for="release_year">Edit release date: </label>
-        <input type="text" name='release_year' value="<?php echo $data['release_year'] ?>">
+        <input type="text" name='release_year' value="<?php echo $data['release_year'] ?>" required>
         <br />
 
         <?php // authors for the menu selection
@@ -67,7 +57,7 @@
         ?>
 
         <label for="author_id">Choose an author: </label>
-        <select name="author_id">
+        <select name="author_id" required>
             <option value="<?php echo $data["author_id"] ?>"><?php echo $data["name"] ?></option>
             <?php
             // author menu
@@ -81,9 +71,28 @@
         </select>
         <br />
 
-        <input type="submit" name="update" value="update">
+        <input type="submit" name="update" value="Update">
+
+        <?php
+        if (isset($_POST['update'])) {
+
+            if ($edit) {
+
+                /* Update $data to echo the new info of book */
+
+
+
+        ?> <p class="request_done"> <?php echo "Book successfully updated"; ?> </p>
+            <?php
+            } else {
+            ?> <p class="request_error"> <?php echo mysqli_error($conn); ?> </p>
+                ?><?php
+                }
+            } ?>
 
     </form>
+
+
 
 
 

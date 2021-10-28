@@ -38,7 +38,7 @@
         <br />
 
         <label for="author_id">Choose an author: </label>
-        <select name="author_id" id="author_id">
+        <select name="author_id" id="author_id" required>
             <option value="">...</option>
             <?php
             // author menu
