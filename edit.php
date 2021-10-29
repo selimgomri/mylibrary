@@ -53,7 +53,7 @@
         <br />
 
         <?php // authors for the menu selection
-        $sql = "SELECT id, name FROM author";
+        $sql = "SELECT id, name FROM author ORDER BY name ASC";
         $result = $conn->query($sql);
         ?>
 

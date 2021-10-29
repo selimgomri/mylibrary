@@ -21,7 +21,7 @@
     <?php
     include "dbConnection.php"; // Using database connection file here
 
-    $sql = "SELECT id, name FROM author";
+    $sql = "SELECT id, name FROM author ORDER BY name ASC";
     $result = $conn->query($sql);
 
     ?>
