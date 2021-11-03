@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav>
-            <h1><a href='http://localhost:8000'>My library</a></h1>
+            <h1><a href='index.php'>My library</a></h1>
         </nav>
     </header>
     <!--siging database -------------------------------------------------------------------------------------->
@@ -43,8 +43,9 @@
             <?php
             // author menu
             while ($row = $result->fetch_assoc()) {
-            ?> <option value=<?php echo $row["id"] ?> required> <?php echo $row["name"] ?> </option>
-            <?php } ?>
+                ?> <option value=<?php echo $row["id"] ?> required> <?php echo $row["name"] ?> </option>
+            <?php
+            } ?>
 
         </select>
         <br />
@@ -60,24 +61,20 @@
         $data = $_REQUEST;
         
         if (empty($data['title'])) {
-            ?> <p class="request_error"> <?php echo "Title is empty";?> </p> <?php
-        }
-        elseif (empty($data['release_year'])) {
-            ?> <p class="request_error"> <?php echo "Release year is empty";?> </p> <?php
-        } 
-        elseif (empty($data['author_id'])) {
-            ?> <p class="request_error"> <?php echo "Please choose an author";?> </p> <?php
-        } 
-        else {
+            ?> <p class="request_error"> <?php echo "Title is empty"; ?> </p> <?php
+        } elseif (empty($data['release_year'])) {
+            ?> <p class="request_error"> <?php echo "Release year is empty"; ?> </p> <?php
+        } elseif (empty($data['author_id'])) {
+            ?> <p class="request_error"> <?php echo "Please choose an author"; ?> </p> <?php
+        } else {
             $sql = "INSERT INTO book (title, release_year, author_id) VALUES ('" . mysqli_real_escape_string($conn, $data['title']) . "', " . $data['release_year'] . ", " . $data['author_id'] . ")";
 
-            if ($conn->query($sql) === TRUE) {
+            if ($conn->query($sql) === true) {
                 ?> <p class="request_done"> <?php echo "New book added successfully"; ?> 
                 </p>
                 <?php // header("Location: index.php"); // redirects to read page
-            } 
-            else {
-            ?> <p class="request_error"> <?php echo "Invalid format of release year"; ?> </p>
+            } else {
+                ?> <p class="request_error"> <?php echo "Invalid format of release year"; ?> </p>
             <?php
             }
         }

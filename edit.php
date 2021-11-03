@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav>
-            <h1><a href='http://localhost:8000'>My library</a></h1>
+            <h1><a href='index.php'>My library</a></h1>
         </nav>
     </header>
     <!--siging database -------------------------------------------------------------------------------------->
