@@ -1,18 +1,7 @@
 <?php
-session_start();
-if (!empty($_SESSION['username'])) {
-    echo "Welcome " . $_SESSION['username']; ?>
-<button class="btn btn-outline-dark"><a href="logout.php">Logout</a></button>
-<?php
-} else {
-    header("Location: login.php");
-    die();
-}
-?>
+include "loginpages.php";
 
-<!--siging database -------------------------------------------------------------------------------------->
-<?php
-
+//<!--siging database -------------------------------------------------------------------------------------->
     include "dbConnection.php"; // Using database connection file here
 
     $id = $_GET['id']; // get id through query string
