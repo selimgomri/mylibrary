@@ -1,5 +1,17 @@
-    <!--siging database -------------------------------------------------------------------------------------->
-    <?php
+<?php
+session_start();
+if (!empty($_SESSION['username'])) {
+    echo "Welcome " . $_SESSION['username']; ?>
+<button class="btn btn-outline-dark"><a href="logout.php">Logout</a></button>
+<?php
+} else {
+    header("Location: login.php");
+    die();
+}
+?>
+
+<!--siging database -------------------------------------------------------------------------------------->
+<?php
 
     include "dbConnection.php"; // Using database connection file here
 
