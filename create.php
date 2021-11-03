@@ -29,17 +29,17 @@
     <!-- form to get the data -->
     <form method="POST">
         <h2> Add book </h2>
-        <label for="title">Enter book title: </label>
-        <input type="text" name='title' id="title" required>
+        <label for="title" >Enter book title: </label>
+        <input type="text" name='title' id="title" class="form-control" required>
         <br />
 
         <label for="release_year">Enter release year: </label>
-        <input type="text" name='release_year' id="release_year" required>
+        <input type="text" name='release_year' id="release_year" class="form-control" required>
         <br />
 
         <label for="author_id">Choose an author: </label>
-        <select name="author_id" id="author_id" required>
-            <option value="">...</option>
+        <select name="author_id" id="author_id" class="form-select" aria-label="Default select example" required>
+            <option value="" >...</option>
             <?php
             // author menu
             while ($row = $result->fetch_assoc()) {
@@ -49,7 +49,7 @@
         </select>
         <br />
 
-        <input type="submit" value="Submit">
+        <input class="btn btn-outline-dark" type="submit" value="Submit">
 
     </form>
 

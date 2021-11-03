@@ -27,10 +27,10 @@
     <form method="POST">
         <h2> Add author </h2>
         <label for="author">Enter author name: </label>
-        <input type="text" name='name' id="name" required>
+        <input type="text" name='name' id="name" class="form-control"required>
         <br />
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="btn btn-outline-dark">
     </form>
 
     <?php

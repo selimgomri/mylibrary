@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myLibrary</title>
+    <title>My Library</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <!--FontAwesome is required for the icons-->
@@ -25,7 +25,7 @@
                 </div>
                 
                 Book released after year
-                <select name="yearFilter">
+                <select name="yearFilter" class="form-select" aria-label="Default select example">
                     <option value="">..</option>
                     <?php
                     for ($i = 1900; $i < 2021; $i += 10) { ?>
@@ -44,8 +44,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($_REQUEST['search'])) {
-
-            $data = explode(" ", preg_replace('/\s+/', ' ', $_REQUEST['search']));
+            $data = explode(" ", preg_replace('/\s+/', ' ', mysqli_real_escape_string($conn, $_REQUEST['search'])));
 
 
             if (!empty($data)) {
@@ -59,13 +58,11 @@
                 }
 
                 if (!empty($conditions)) {
-
                     $sql .= "WHERE (" . implode(" OR ", $conditions) . ")";
                 }
             }
         }
         if (!empty($_REQUEST['yearFilter'])) {
-
             $sql .= " AND release_year >= " . $_REQUEST['yearFilter'];
             echo "Since year '" . $_REQUEST['yearFilter'] . "'</br>";
         }
@@ -80,7 +77,7 @@
     <button class="btn btn-outline-dark"><a href='addAuthor.php'>Add a new author</a></button>
     <?php
     if ($result->num_rows > 0) {
-    ?>
+        ?>
         
 
         <table class="table table-dark table-striped">
@@ -91,10 +88,10 @@
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <?php // output data of each row 
+            <?php // output data of each row
             ?>
             <?php while ($row = $result->fetch_assoc()) {
-            ?> <tr>
+                ?> <tr>
                     <td> <?php echo $row["title"]; ?></td>
                     <td><?php echo $row["release_year"]; ?> </td>
                     <td> <?php echo $row["name"]; ?> </td>
@@ -104,9 +101,11 @@
                 </tr>
 
 
-            <?php } ?>
+            <?php
+            } ?>
         </table>
-    <?php } else { ?>
+    <?php
+    } else { ?>
         0 results
     <?php }
 

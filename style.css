@@ -29,6 +29,9 @@ header h1 {
 .form-control {
     width: 20%;
 }
+.form-select {
+    width: 20%;
+}
 form div   {
     display: flex;
 }
