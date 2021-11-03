@@ -18,23 +18,28 @@ session_start();
 <body>
     <header>
         <?php
-    if (isset($_SESSION['username'])) {
-        echo "Welcome " . $_SESSION['username'];
-    }
-    else {
+        if (!empty($_SESSION['username'])) {
+            echo "Welcome " . $_SESSION['username'];
+            ?>
+        <button><a href="logout.php">logout</a></button>
+        <?php
+        } 
+        else {
         ?>
-
-        <form method="POST" >
+        <form method="POST">
             <label for="username">Enter Username: </label>
-            <input type="text" name='username' class="form-control" required>
+            <input type="text" name='username' class="form-control">
             <input class="btn btn-outline-dark" type="submit" value="Log in">
-            <form>
             <?php
-            $_SESSION=$_POST;
-            var_dump($_SESSION);
-            header("Location: index.php");
-    }?>
-
+                if (!empty($_POST)) {
+                    $_SESSION=$_POST;
+                    header("Location: index.php");
+                }
+                ?>
+        </form>
+        <?php
+               
+            } ?>
     </header>
 </body>
 

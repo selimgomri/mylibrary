@@ -22,23 +22,21 @@ session_start();
 <body>
     <header>
         <h1>My library</h1>
+
         <div>
             <?php
-        if (isset($_SESSION['username'])) {
+        if (!empty($_SESSION['username'])) {
             echo "Welcome " . $_SESSION['username'];
-            
-        } 
-        else {
-        ?>
-            <form method="POST">
-                <label for="username">Enter Username: </label>
-                <input type="text" name='username' class="form-control" required>
-                <input class="btn btn-outline-dark" type="submit" value="Log in">
-            </form>
+            ?>
+            <button class="btn btn-outline-dark"><a href="logout.php">Logout</a></button>
             <?php
-                $_SESSION=$_POST;
-                var_dump($_SESSION);
-        }?>
+        }
+        else {
+            ?>
+            <button class="btn btn-outline-dark"><a href="login.php">Log in</a></button>
+            <?php
+        }
+        ?>
         </div>
 
         <nav>
