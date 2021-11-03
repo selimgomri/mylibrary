@@ -26,7 +26,7 @@ session_start();
         <div>
             <?php
         if (!empty($_SESSION['username'])) {
-            echo "Welcome " . $_SESSION['username'];
+            echo "Welcome " . $_SESSION['username']. " ";
             ?>
             <button class="btn btn-outline-dark"><a href="logout.php">Logout</a></button>
             <?php
@@ -95,7 +95,7 @@ session_start();
 
     $result = $conn->query($sql);
     ?>
-    <button class="btn btn-outline-dark"><a href='create.php'>Add a new book</a></button>
+    <button class="btn btn-outline-dark"><a href='addBook.php'>Add a new book</a></button>
     <button class="btn btn-outline-dark"><a href='addAuthor.php'>Add a new author</a></button>
     <?php
     if ($result->num_rows > 0) {

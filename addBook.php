@@ -1,7 +1,3 @@
-<?php
-include "loginpages.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +17,9 @@ include "loginpages.php";
         <nav>
             <h1><a href='index.php'>My library</a></h1>
         </nav>
+        <?php
+        include "loginpages.php";
+        ?>
     </header>
     <!--siging database -------------------------------------------------------------------------------------->
     <?php
@@ -34,6 +33,8 @@ include "loginpages.php";
     <!-- form to get the data -->
     <form method="POST">
         <h2> Add book </h2>
+
+
         <label for="title">Enter book title: </label>
         <input type="text" name='title' id="title" class="form-control" required>
         <br />

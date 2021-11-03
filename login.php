@@ -17,15 +17,6 @@ session_start();
 
 <body>
     <header>
-        <?php
-        if (!empty($_SESSION['username'])) {
-            echo "Welcome " . $_SESSION['username'];
-            ?>
-        <button><a href="logout.php">logout</a></button>
-        <?php
-        } 
-        else {
-        ?>
         <form method="POST">
             <label for="username">Enter Username: </label>
             <input type="text" name='username' class="form-control">
@@ -37,9 +28,6 @@ session_start();
                 }
                 ?>
         </form>
-        <?php
-               
-            } ?>
     </header>
 </body>
 

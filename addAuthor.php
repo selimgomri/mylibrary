@@ -1,7 +1,3 @@
-<?php
-include "loginpages.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +16,9 @@ include "loginpages.php";
         <nav>
             <h1><a href='index.php'>My library</a></h1>
         </nav>
+        <?php
+        include "loginpages.php";
+        ?>
     </header>
     <!--siging database -------------------------------------------------------------------------------------->
     <?php
