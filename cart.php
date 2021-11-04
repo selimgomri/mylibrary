@@ -22,6 +22,11 @@
             <h2>Cart</h2>
         </nav>
     </header>
+    <?php 
+    if (!isset($_SESSION['cartItem'])) {
+        echo "Cart is empty";
+    }
+    else { ?>
     <table class="table table-dark table-striped">
         <tr>
             <th>Title</th>
@@ -40,6 +45,7 @@
         <?php
         } ?>
     </table>
+    <?php } ?>
 
 
 
