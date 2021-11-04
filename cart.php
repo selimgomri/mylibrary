@@ -22,6 +22,8 @@
             <h2>Cart</h2>
         </nav>
     </header>
+<?php var_dump($_SESSION['cartItem']); ?>
+
     <table class="table table-dark table-striped">
         <tr>
             <th>Title</th>
