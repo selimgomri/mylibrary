@@ -112,7 +112,7 @@ session_start();
             <th>Edit</th>
             <th>Delete</th>
             <th>Add to cart</th>
-            
+
 
         </tr>
         <?php // output data of each row
@@ -139,10 +139,6 @@ session_start();
         </tr>
         <?php
             } ?>
-        <?php 
-
-            var_dump($_SESSION);
-        ?>
     </table>
 
 

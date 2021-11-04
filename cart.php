@@ -1,4 +1,3 @@
-<?php @include "dbConnection.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,63 +22,25 @@
             <h2>Cart</h2>
         </nav>
     </header>
-
-
-    <?php
-    $sql = "SELECT book.id, title, release_year, name FROM book JOIN author ON book.author_id=author.id Where book.id=" . ;
-
-     $result = $conn->query($sql);
-      if ($result->num_rows > 0) {
-          ?>
-
-
     <table class="table table-dark table-striped">
         <tr>
             <th>Title</th>
             <th>Release year</th>
             <th>Author</th>
-
-
-
         </tr>
-        <?php // output data of each row
-              ?>
-        <?php while ($row = $result->fetch_assoc()) {
-                  ?> <tr>
-            <td> <?php echo $row["title"]; ?></td>
-            <td><?php echo $row["release_year"]; ?> </td>
-            <td> <?php echo $row["name"]; ?> </td>
-            <td> <a href="edit.php?id=<?php echo $row["id"] ?>"><i class="fas fa-edit"></i></a> </td>
-            <td> <a href="delete.php?id=<?php echo $row["id"] ?>"><i class="fas fa-trash-alt"></i></a> </td>
-            <td>
-                <?php 
-                  if (!empty($_POST['cart'])) {
-                      if (empty($_SESSION['username'])) {
-                          header("Location: login.php");
-                          die();
-                      }
-                  }?>
-                <form method="POST" action="cartAdd.php?action=add&id=<?php echo $row["id"];?>">
-                    <input type="submit" value="Add to cart" name="cart">
-                </form>
-            </td>
+
+        <?php 
+        foreach($row=$_SESSION['cartItem'] as $k => $v) {
+        ?>
+        <tr>
+            <td> <?php echo $row[$k]["title"]; ?></td>
+            <td><?php echo $row[$k]["release_year"]; ?> </td>
+            <td> <?php echo $row[$k]["name"]; ?> </td>
         </tr>
         <?php
-              } ?>
-        <?php 
-  
-              var_dump($_SESSION);
-          ?>
+        } ?>
     </table>
 
-
-    <?php
-      } else { ?>
-    0 results
-    <?php }
-  
-      $conn->close();
-      ?>
 
 
 
