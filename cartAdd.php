@@ -30,4 +30,4 @@ if (!empty($_POST)) {
     }
 }
 
-//header("Location: index.php");
+header("Location: index.php");
