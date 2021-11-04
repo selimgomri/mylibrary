@@ -22,6 +22,8 @@ session_start();
 <body>
     <header>
         <h1>My library</h1>
+        <button class="btn btn-outline-dark"><a href='cart.php'>Cart</a></button>
+
 
         <div>
             <?php
@@ -109,6 +111,9 @@ session_start();
             <th>Author</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Add to cart</th>
+
+
         </tr>
         <?php // output data of each row
             ?>
@@ -119,13 +124,24 @@ session_start();
             <td> <?php echo $row["name"]; ?> </td>
             <td> <a href="edit.php?id=<?php echo $row["id"] ?>"><i class="fas fa-edit"></i></a> </td>
             <td> <a href="delete.php?id=<?php echo $row["id"] ?>"><i class="fas fa-trash-alt"></i></a> </td>
-
+            <td>
+                <?php 
+                if (!empty($_POST['cart'])) {
+                    if (empty($_SESSION['username'])) {
+                        header("Location: login.php");
+                        die();
+                    }
+                }?>
+                <form method="POST" action="cartAdd.php?action=add&id=<?php echo $row["id"];?>">
+                    <input type="submit" value="Add to cart" name="cart">
+                </form>
+            </td>
         </tr>
-
-
         <?php
             } ?>
     </table>
+
+
     <?php
     } else { ?>
     0 results
