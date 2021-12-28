@@ -22,7 +22,7 @@ session_start();
 <body>
     <header>
         <h1>My library</h1>
-        <button class="btn btn-outline-dark"><a href='cart.php'>Cart</a></button>
+        <button class="btn btn-outline-dark right"><a href='cart.php'><i class="fas fa-shopping-bag"></i></a></button>
 
 
         <div>

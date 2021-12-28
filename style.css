@@ -45,3 +45,7 @@ form div button{
 .request_error {
     color :red;
 }
+
+.right {
+    float: right;
+}
