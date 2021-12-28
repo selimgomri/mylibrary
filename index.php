@@ -30,7 +30,9 @@ session_start();
         if (!empty($_SESSION['username'])) {
             echo "Welcome " . $_SESSION['username']. " ";
             ?>
-            <button class="btn btn-outline-dark"><a href="logout.php">Logout</a></button>
+            <div>
+                <button class="btn btn-outline-dark"><a href="logout.php">Logout</a></button>
+            </div>
             <?php
         }
         else {
