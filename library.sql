@@ -26,7 +26,7 @@ CREATE TABLE `author` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (1,'J. K. Rowling'),(2,'George R. R. Martin');
+INSERT INTO `author` VALUES (1,'J. K. Rowling'),(2,'George R. R. Martin'),(14,'Jane Austen'),(15,'John Green'),(16,'nouveau auteur'),(17,'no expansion');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,8 +54,8 @@ CREATE TABLE `book` (
   `readers_note` float DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_book_author_idx` (`author_id`),
-  CONSTRAINT `fk_book_author` FOREIGN KEY (`author_id`) REFERENCES `book` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_book_author` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (1,'Harry  the Philosopher\'s Stone ',1,1997,4.27),(2,'Harry Pott',2,1299,4.03),(3,'Harry Potter and the Prisoner of Azkaban',1,1999,4.33),(4,'Gamee of Throne',1,1996,4.46),(17,'Jojo',1,1000,NULL),(20,'eee',1,2222,NULL),(21,'eee',1,2222,NULL),(22,'eee',1,2222,NULL);
+INSERT INTO `book` VALUES (46,'A Game of Thrones',2,1996,NULL),(47,'A Clash of Kings',2,1998,NULL),(48,'A Storm of Swords',2,2000,NULL),(50,'Harry Potter and the Philosopher\'s Stone',1,1997,NULL),(52,'Harry Potter and the Prisoner of Azkaban',1,1999,NULL),(53,'Pride and Prejudice',14,1813,NULL),(54,'Northanger Abbey',14,2013,NULL),(56,'Mansfield Park',14,2013,NULL),(59,'Looking for Alaska',15,2005,NULL),(60,'Will Grayson, Will Grayson',15,2009,NULL);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -77,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-28  9:45:34
+-- Dump completed on 2021-12-28 10:59:57
